@@ -1,4 +1,4 @@
-# desafio-buttons
+# desafio-hooks
 
 ### Desafio React: Criar um Componente de Botão com Vários Estados
 Seu objetivo é criar um componente React que consome uma API usando um botão para fazer uma requisição GET e usar o hook useEffect para fazer a mesma requisição ao carregar a página:
