@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import FetchData from './FetchData';
+import Button from './Components/Button';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [page, setPage] = useState(1);
+
+  const goToNextPage = () => {
+    setPage(page + 1);
+  };
+
+  const goToPreviousPage = () => {
+    if (page > 1) setPage(page - 1); // Certifique-se de não ir para uma página menor que 1
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FetchData page={page} /> {/* Passando 'page' como propriedade */}
+      <div className="pagination">
+        <Button onClick={goToPreviousPage} disabled={page === 1}>Anterior</Button>
+        <span>Página {page}</span>
+        <Button onClick={goToNextPage}>Próxima</Button>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
